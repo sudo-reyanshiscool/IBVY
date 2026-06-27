@@ -13,11 +13,13 @@ export function DashboardShell({
   userName,
   children,
   signOutSlot,
+  demoSlot,
 }: {
   role: Role;
   userName: string;
   children: React.ReactNode;
   signOutSlot?: React.ReactNode;
+  demoSlot?: React.ReactNode;
 }) {
   return (
     <div className="flex min-h-svh bg-paper">
@@ -40,7 +42,8 @@ export function DashboardShell({
           <div className="md:hidden">
             <Wordmark href={`/${role}`} />
           </div>
-          <div className="ml-auto flex items-center gap-4">
+          <div className="ml-auto flex items-center gap-3">
+            {demoSlot}
             <div className="text-right">
               <p className="text-sm font-medium leading-tight text-ink">
                 {userName}

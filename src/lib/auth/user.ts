@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { DEMO_MODE } from "@/lib/config";
+import { getDemoActor } from "@/lib/demo/session";
 import type { Role } from "@/lib/nav";
 
 export interface Profile {
@@ -55,6 +57,13 @@ export async function getSessionProfile(): Promise<{
  * Backs the proxy-level guard with a server-component check.
  */
 export async function requireRole(role: Role): Promise<Profile> {
+  // Prototype mode: no real auth. Return the demo actor for the requested
+  // role so every workspace is freely browsable.
+  if (DEMO_MODE) {
+    const actor = await getDemoActor(role);
+    return { id: actor.id, role, full_name: actor.fullName };
+  }
+
   const session = await getSessionProfile();
   if (!session || !session.profile) redirect("/login");
   if (session.profile.role !== role) {
