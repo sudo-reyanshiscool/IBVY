@@ -3,8 +3,10 @@ import { updateSession } from "@/lib/supabase/middleware";
 
 /**
  * Next 16 renamed the `middleware` file convention to `proxy`. This runs on
- * every matched request to keep the Supabase session fresh. Role-aware route
- * protection for /teacher, /school, /admin is added here in phase 2.
+ * every matched request to keep the Supabase session fresh and to enforce
+ * role-aware route protection for /teacher, /school and /admin (see
+ * updateSession). Signed-out users on protected routes go to /login; signed-in
+ * users on the wrong group or on /login or /signup go to their own dashboard.
  */
 export async function proxy(request: NextRequest) {
   return updateSession(request);

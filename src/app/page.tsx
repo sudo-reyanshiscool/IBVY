@@ -76,25 +76,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Scaffold preview links (development aid, removed in phase 7 polish) */}
-        <section className="mx-auto w-full max-w-5xl px-6 pb-24">
-          <div className="rounded-lg border border-dashed border-line bg-paper-raised p-6">
-            <p className="mb-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-              Scaffold preview: role workspaces
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Button asChild variant="secondary" size="sm">
-                <Link href="/teacher">Teacher workspace</Link>
-              </Button>
-              <Button asChild variant="secondary" size="sm">
-                <Link href="/school">School workspace</Link>
-              </Button>
-              <Button asChild variant="secondary" size="sm">
-                <Link href="/admin">Admin workspace</Link>
-              </Button>
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer className="border-t border-line px-6 py-8">
