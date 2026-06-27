@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IBvy
 
-## Getting Started
+IBvy (read as "IB" plus "ivy") is the engine that **sources, trains, certifies, and places** IB teachers inside India's own international schools. It serves three roles (teacher, school, admin) across three markets, on a single train-and-certify rail.
 
-First, run the development server:
+This repository currently runs as a **working prototype**: every feature is browsable with seeded demo data and no backend required. The real Supabase data and auth layer is scaffolded behind a clean seam and switches on when configured.
+
+## Tech stack
+
+- **Next.js 16** (App Router, TypeScript) and **Tailwind CSS v4**
+- **shadcn/ui** primitives, restyled to the IBvy brand, with **lucide-react** icons
+- **Lora** (display) and **Inter** (UI) via `next/font/google`
+- **recharts** for the admin dashboard
+- **Supabase** (`@supabase/ssr`) for auth, Postgres, Storage and RLS (scaffolded)
+- Deployed on **Vercel**
+
+## Demo mode
+
+When no Supabase environment variables are set, the app runs in demo mode:
+
+- No login wall. Browse the teacher, school, and admin workspaces directly from the landing page.
+- Seeded mock data drives every screen (see `src/lib/mock/`).
+- An "act as" switcher in the dashboard top bar lets you browse as different teachers and schools (including a transforming school for the market-one staff-training flow).
+
+The flag lives in `src/lib/config.ts`. The single data-access seam is `src/lib/data/queries.ts`: every screen reads from it, so swapping mock data for Supabase queries is localised.
+
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To connect a real Supabase backend, copy `.env.example` to `.env.local` and fill in your project's values. The SQL lives in `supabase/migrations/` as ordered files (see `supabase/README.md`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+src/
+  app/
+    (marketing)/     public landing and door pages, courses, the board, verify
+    (auth)/          login and signup
+    teacher/         teacher workspace
+    school/          school workspace (established IB and transforming)
+    admin/           admin workspace and metrics
+    auth/confirm/    email confirmation route
+  components/        brand primitives, shell, and per-role UI
+  lib/
+    config.ts        DEMO_MODE flag
+    types.ts         domain types (mirror the Postgres schema)
+    data/queries.ts  data-access seam (mock now, Supabase later)
+    mock/            seeded demo dataset
+    match.ts         the match indicator scoring
+    supabase/        @supabase/ssr clients (browser, server, admin) + proxy helper
+  proxy.ts           Next 16 proxy (renamed from middleware): session + role guards
+supabase/migrations/ ordered SQL (schema, RLS, functions)
+```
 
-To learn more about Next.js, take a look at the following resources:
+## House rules
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+British English throughout, no em dashes, and no red anywhere: warning and destructive states use clay (a warm brown). Certified and paid states use brass and ivy.
