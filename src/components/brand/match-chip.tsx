@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils";
 import type { MatchLevel, MatchResult } from "@/lib/match";
 
 const levelClasses: Record<MatchLevel, string> = {
-  strong: "bg-ivy/12 text-ivy border-ivy/25 backdrop-blur-sm",
-  subject: "bg-brass-tint text-[#7a5b1e] border-[#caa14e]/35 backdrop-blur-sm",
-  programme: "bg-iris/12 text-[#4b46c4] border-iris/25 backdrop-blur-sm",
-  weak: "bg-white/40 text-muted-foreground border-white/50 backdrop-blur-sm",
+  strong: "bg-ivy/18 text-[#5fd3a6] border-ivy/35",
+  subject: "bg-brass-tint text-brass border-brass/35",
+  programme: "bg-white/8 text-[#aebfb6] border-white/14",
+  weak: "bg-white/5 text-muted-foreground border-white/12",
 };
 
 /** Small editorial chip shown against vacancies and talent. */

@@ -26,7 +26,7 @@ export default async function SchoolStaffPage() {
       />
 
       {school?.schoolType !== "transforming" && (
-        <div className="mb-6 rounded-lg border border-brass/30 bg-brass-tint/30 px-4 py-3 text-sm text-[#6b5325]">
+        <div className="mb-6 rounded-lg border border-brass/30 bg-brass-tint px-4 py-3 text-sm text-brass">
           Staff training is designed for schools transforming to IB. Switch to a
           transforming school from the demo selector to see a populated cohort.
         </div>

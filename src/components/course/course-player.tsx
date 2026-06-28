@@ -75,8 +75,8 @@ export function CoursePlayer({
                         className={cn(
                           "flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors",
                           isActive
-                            ? "bg-ivy/10 text-ivy"
-                            : "text-ink hover:bg-sage-soft/50",
+                            ? "bg-ivy/15 text-ivy-tint"
+                            : "text-ink hover:bg-white/5",
                         )}
                       >
                         {done ? (

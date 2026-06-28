@@ -9,13 +9,12 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: "border-white/40 bg-ivy/90 text-white backdrop-blur-sm",
-        secondary: "border-white/50 bg-white/55 text-ink backdrop-blur-sm",
-        brass:
-          "border-[#caa14e]/40 bg-brass-tint text-[#7a5b1e] backdrop-blur-sm",
-        outline: "border-white/60 bg-white/30 text-ink backdrop-blur-sm",
+        default: "border-transparent bg-ivy/85 text-white",
+        secondary: "border-white/12 bg-white/8 text-ink",
+        brass: "border-brass/30 bg-brass-tint text-brass",
+        outline: "border-white/18 bg-transparent text-ink",
         // Negative / withdrawn states use clay, never red.
-        clay: "border-clay/25 bg-clay/12 text-clay backdrop-blur-sm",
+        clay: "border-clay/30 bg-clay/15 text-[#e3a282]",
       },
     },
     defaultVariants: {
