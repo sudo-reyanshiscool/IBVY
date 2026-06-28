@@ -60,7 +60,9 @@ export function DashboardShell({
         </header>
 
         <main className="flex-1 px-6 py-8">
-          <div className="mx-auto w-full max-w-6xl">{children}</div>
+          <div className="mx-auto w-full max-w-6xl animate-fade-up">
+            {children}
+          </div>
         </main>
       </div>
     </div>

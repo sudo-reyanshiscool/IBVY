@@ -5,19 +5,21 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-paper disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-paper disabled:pointer-events-none disabled:opacity-50 disabled:hover:translate-y-0 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:transition-transform",
   {
     variants: {
       variant: {
-        default: "bg-ivy text-paper hover:bg-ivy-tint",
+        default:
+          "bg-ivy text-paper shadow-sm hover:bg-ivy-tint hover:shadow-md hover:shadow-ivy/20",
         secondary: "bg-sage-soft text-ink hover:bg-sage-soft/70",
         outline:
-          "border border-line bg-transparent text-ink hover:bg-sage-soft/40",
+          "border border-line bg-transparent text-ink hover:border-ivy/30 hover:bg-sage-soft/40",
         ghost: "text-ink hover:bg-sage-soft/40",
-        brass: "bg-brass text-ink hover:bg-brass/90",
+        brass:
+          "bg-brass text-ink shadow-sm hover:bg-brass/90 hover:shadow-md hover:shadow-brass/25",
         // Destructive uses clay, never red, per the house rules.
-        destructive: "bg-clay text-paper hover:bg-clay/90",
-        link: "text-ivy underline-offset-4 hover:underline",
+        destructive: "bg-clay text-paper shadow-sm hover:bg-clay/90",
+        link: "text-ivy underline-offset-4 hover:underline hover:translate-y-0",
       },
       size: {
         default: "h-10 px-4 py-2",

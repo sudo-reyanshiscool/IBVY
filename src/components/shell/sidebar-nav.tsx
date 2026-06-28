@@ -24,13 +24,20 @@ export function SidebarNav({ role }: { role: Role }) {
             href={item.href}
             aria-current={active ? "page" : undefined}
             className={cn(
-              "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors",
+              "group relative flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-all duration-200",
               active
                 ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                : "text-sidebar-foreground/75 hover:bg-sidebar-accent/60 hover:text-sidebar-foreground",
+                : "text-sidebar-foreground/75 hover:translate-x-0.5 hover:bg-sidebar-accent/60 hover:text-sidebar-foreground",
             )}
           >
-            <Icon className="size-4 shrink-0" aria-hidden />
+            <span
+              className={cn(
+                "absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-brass transition-all duration-300",
+                active ? "opacity-100" : "opacity-0 group-hover:opacity-60",
+              )}
+              aria-hidden
+            />
+            <Icon className="size-4 shrink-0 transition-transform duration-200 group-hover:scale-110" aria-hidden />
             {item.label}
           </Link>
         );

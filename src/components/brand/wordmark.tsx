@@ -19,12 +19,15 @@ export function Wordmark({
     <Link
       href={href}
       className={cn(
-        "font-serif text-2xl font-semibold tracking-tight",
+        "group font-serif text-2xl font-semibold tracking-tight transition-opacity hover:opacity-90",
         tone === "dark" ? "text-paper" : "text-ivy",
         className,
       )}
     >
-      IB<span className="text-brass">vy</span>
+      IB
+      <span className="inline-block text-brass transition-transform duration-300 group-hover:-translate-y-0.5">
+        vy
+      </span>
       <span className="sr-only"> {SITE_NAME} home</span>
     </Link>
   );
