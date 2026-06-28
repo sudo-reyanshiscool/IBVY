@@ -33,7 +33,7 @@ export default function RootLayout({
       lang="en-GB"
       className={`${lora.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-paper text-ink">{children}</body>
+      <body className="min-h-full text-ink">{children}</body>
     </html>
   );
 }

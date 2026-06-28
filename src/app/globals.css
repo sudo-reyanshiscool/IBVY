@@ -2,61 +2,71 @@
 @import "tw-animate-css";
 
 /*
-  IBvy brand layer. Editorial and institutional: warm cream, deep ivy green,
-  muted brass. Never red anywhere; destructive and warning states use clay.
-  Brand palette from the build brief, section 4.
+  IBvy glassmorphic brand layer.
+
+  The look is light, premium glass: frosted translucent surfaces floating over
+  a soft animated aurora. Deep teal-ivy stays the brand anchor (IB plus ivy),
+  gold marks certification, and a quiet iris accent carries the gradients.
+  House rules still hold: British English copy, no em dashes, never red. Any
+  destructive or warning state uses clay (a warm brown).
 */
 
 :root {
-  /* Brand tokens (raw values from the brief) */
-  --paper: #f4f1e9; /* App background, warm cream */
-  --paper-raised: #fbfaf5; /* Cards and raised surfaces */
-  --ink: #1a1f1b; /* Primary text, warm near-black */
-  --ivy: #1e3a2b; /* Primary brand */
-  --ivy-tint: #3a6049; /* Hover and selected, secondary green */
-  --sage: #7e9685; /* Muted surfaces, neutral / in-progress */
-  --sage-soft: #dde5dc; /* Pale sage surface and progress track */
-  --brass: #9c7a3c; /* Accent, certification, key icons and borders */
-  --brass-tint: #e9dec8; /* Accent and badge backgrounds */
-  --clay: #8a4b2f; /* Destructive and warning, a warm brown, never red */
-  --line: #d6d2c4; /* Borders and dividers, warm grey */
+  /* Core ink and surfaces */
+  --ink: #1b2230; /* Primary text, deep cool slate */
+  --paper: #eef1fb; /* Solid light fallback background */
+  --paper-raised: rgba(255, 255, 255, 0.62); /* Frosted glass surface */
 
-  /* shadcn/ui semantic tokens, mapped onto the ivy palette */
-  --radius: 0.5rem;
+  /* Brand */
+  --ivy: #0c6e57; /* Primary brand: deep teal-ivy */
+  --ivy-tint: #10a07e; /* Hover and selected, brighter ivy */
+  --iris: #6366f1; /* Accent for gradients and highlights */
+  --iris-tint: #a78bfa;
+  --sky: #38bdf8;
+  --sage: #7c8aa5; /* Muted cool slate, neutral / in-progress */
+  --sage-soft: #d9e0f2; /* Pale track and muted surface */
+  --brass: #b1842e; /* Certification gold */
+  --brass-tint: rgba(214, 168, 74, 0.22); /* Gold badge wash */
+  --clay: #a4583a; /* Destructive and warning, warm brown, never red */
+  --line: rgba(60, 72, 104, 0.14); /* Borders and dividers */
+  --glass-edge: rgba(255, 255, 255, 0.7); /* Bright glass highlight border */
+
+  /* shadcn/ui semantic tokens, mapped onto the glass palette */
+  --radius: 0.85rem;
   --background: var(--paper);
   --foreground: var(--ink);
   --card: var(--paper-raised);
   --card-foreground: var(--ink);
-  --popover: var(--paper-raised);
+  --popover: rgba(255, 255, 255, 0.9);
   --popover-foreground: var(--ink);
   --primary: var(--ivy);
-  --primary-foreground: var(--paper);
+  --primary-foreground: #ffffff;
   --secondary: var(--sage-soft);
   --secondary-foreground: var(--ink);
   --muted: var(--sage-soft);
-  --muted-foreground: #50584f;
+  --muted-foreground: #59617a;
   --accent: var(--brass-tint);
   --accent-foreground: var(--ink);
   --destructive: var(--clay);
-  --destructive-foreground: var(--paper);
+  --destructive-foreground: #ffffff;
   --border: var(--line);
-  --input: var(--line);
-  --ring: var(--ivy-tint);
+  --input: rgba(60, 72, 104, 0.18);
+  --ring: var(--iris);
 
-  /* Charts (admin dashboard): ivy, brass, sage tones, no red */
+  /* Charts (admin dashboard): ivy, gold, iris, sky tones, no red */
   --chart-1: var(--ivy);
   --chart-2: var(--brass);
-  --chart-3: var(--sage);
+  --chart-3: var(--iris);
   --chart-4: var(--ivy-tint);
-  --chart-5: var(--clay);
+  --chart-5: var(--sky);
 
-  /* Sidebar shell tokens */
-  --sidebar: var(--ivy);
-  --sidebar-foreground: var(--paper);
+  /* Sidebar shell tokens: dark glass over the aurora */
+  --sidebar: rgba(18, 28, 38, 0.55);
+  --sidebar-foreground: #eef4f1;
   --sidebar-primary: var(--brass);
-  --sidebar-primary-foreground: var(--ink);
-  --sidebar-accent: var(--ivy-tint);
-  --sidebar-accent-foreground: var(--paper);
+  --sidebar-primary-foreground: #1b2230;
+  --sidebar-accent: rgba(255, 255, 255, 0.14);
+  --sidebar-accent-foreground: #ffffff;
   --sidebar-border: rgba(255, 255, 255, 0.12);
   --sidebar-ring: var(--brass);
 }
@@ -68,12 +78,16 @@
   --color-ink: var(--ink);
   --color-ivy: var(--ivy);
   --color-ivy-tint: var(--ivy-tint);
+  --color-iris: var(--iris);
+  --color-iris-tint: var(--iris-tint);
+  --color-sky: var(--sky);
   --color-sage: var(--sage);
   --color-sage-soft: var(--sage-soft);
   --color-brass: var(--brass);
   --color-brass-tint: var(--brass-tint);
   --color-clay: var(--clay);
   --color-line: var(--line);
+  --color-glass-edge: var(--glass-edge);
 
   /* shadcn semantic colours */
   --color-background: var(--background);
@@ -114,26 +128,113 @@
   --font-sans: var(--font-inter);
 
   /* Radii */
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 6px);
 }
 
 @layer base {
   * {
     border-color: var(--color-border);
   }
+
+  html {
+    scroll-behavior: smooth;
+    /* Solid fallback that sits behind the animated aurora pseudo-element. */
+    background-color: #eaeefb;
+  }
+
   body {
-    background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+    /* Transparent so the fixed aurora below shows through. */
+    background-color: transparent;
+    min-height: 100svh;
   }
+
+  /* The animated aurora lives on a fixed layer behind everything. Soft, light
+     blobs of iris, sky, ivy and rose drift slowly so glass surfaces always sit
+     over gentle colour without hurting readability. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -20vmax;
+    z-index: -1;
+    background:
+      radial-gradient(38vmax 38vmax at 12% 18%, rgba(99, 102, 241, 0.42), transparent 60%),
+      radial-gradient(36vmax 36vmax at 88% 12%, rgba(56, 189, 248, 0.38), transparent 60%),
+      radial-gradient(42vmax 42vmax at 78% 88%, rgba(16, 160, 126, 0.36), transparent 62%),
+      radial-gradient(34vmax 34vmax at 20% 92%, rgba(240, 171, 252, 0.34), transparent 60%),
+      linear-gradient(135deg, #eef2ff 0%, #f3f1ff 45%, #eafaf4 100%);
+    animation: aurora-drift 26s ease-in-out infinite alternate;
+  }
+
+  @keyframes aurora-drift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(2%, -2%, 0) scale(1.06);
+    }
+    100% {
+      transform: translate3d(-2%, 2%, 0) scale(1.04);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body::before {
+      animation: none;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   h1,
   h2,
   h3,
   h4 {
     font-family: var(--font-serif), ui-serif, Georgia, serif;
+  }
+}
+
+@layer components {
+  /* The frosted glass surface used by cards, panels and bars. */
+  .glass {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid var(--glass-edge);
+    box-shadow:
+      0 10px 30px -12px rgba(27, 34, 48, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
+
+  /* A stronger, more opaque glass for primary reading surfaces. */
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(22px) saturate(165%);
+    -webkit-backdrop-filter: blur(22px) saturate(165%);
+    border: 1px solid var(--glass-edge);
+    box-shadow:
+      0 18px 44px -18px rgba(27, 34, 48, 0.34),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  /* Dark glass for the dashboard sidebar over the aurora. */
+  .glass-dark {
+    background: rgba(16, 26, 34, 0.55);
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* A thin translucent bar (top bars, sticky headers). */
+  .glass-bar {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
   }
 }

@@ -20,17 +20,19 @@ const COLUMNS = [
     ],
   },
   {
-    title: "Account",
+    title: "Explore",
     links: [
-      { href: "/login", label: "Sign in" },
-      { href: "/signup", label: "Create an account" },
+      { href: "/teacher", label: "Teacher workspace" },
+      { href: "/school", label: "School workspace" },
+      { href: "/admin", label: "Admin workspace" },
+      { href: "/wireframes", label: "Course & exam wireframes" },
     ],
   },
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-line bg-paper-raised">
+    <footer className="glass-bar border-t border-glass-edge">
       <div className="mx-auto w-full max-w-6xl px-6 py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
