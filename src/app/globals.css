@@ -2,62 +2,74 @@
 @import "tw-animate-css";
 
 /*
-  IBvy brand layer. Editorial and institutional: warm cream, deep ivy green,
-  muted brass. Never red anywhere; destructive and warning states use clay.
-  Brand palette from the build brief, section 4.
+  IBvy dark glass brand layer.
+
+  Editorial and institutional, rendered dark and premium: a deep forest-ink
+  canvas, light frosted glass panels with hairline borders, restrained motion.
+  Emerald ivy is the brand fill, gold is reserved for certification, and there
+  is no neon and no rainbow. House rules hold: British English, no em dashes,
+  never red. Destructive and warning states use clay (a warm brown).
 */
 
 :root {
-  /* Brand tokens (raw values from the brief) */
-  --paper: #f4f1e9; /* App background, warm cream */
-  --paper-raised: #fbfaf5; /* Cards and raised surfaces */
-  --ink: #1a1f1b; /* Primary text, warm near-black */
-  --ivy: #1e3a2b; /* Primary brand */
-  --ivy-tint: #3a6049; /* Hover and selected, secondary green */
-  --sage: #7e9685; /* Muted surfaces, neutral / in-progress */
-  --sage-soft: #dde5dc; /* Pale sage surface and progress track */
-  --brass: #9c7a3c; /* Accent, certification, key icons and borders */
-  --brass-tint: #e9dec8; /* Accent and badge backgrounds */
-  --clay: #8a4b2f; /* Destructive and warning, a warm brown, never red */
-  --line: #d6d2c4; /* Borders and dividers, warm grey */
+  /* Ink is now light: it is the primary text on the dark canvas. */
+  --ink: #e8efe9;
+  /* Paper stays the light "inverse" tone, used for text and chips on dark or
+     coloured fills (text-paper, primary-foreground). */
+  --paper: #eef2ef;
+  --paper-raised: rgba(255, 255, 255, 0.05); /* Frosted glass surface */
 
-  /* shadcn/ui semantic tokens, mapped onto the ivy palette */
-  --radius: 0.5rem;
-  --background: var(--paper);
+  /* Canvas */
+  --canvas: #0a120f; /* Deep forest-ink background */
+
+  /* Brand */
+  --ivy: #1f8a63; /* Emerald ivy, the brand fill */
+  --ivy-tint: #2bb083; /* Brighter ivy for hover and accents */
+  --sage: #8fa69b; /* Muted light sage, neutral / in-progress text */
+  --sage-soft: rgba(255, 255, 255, 0.08); /* Muted translucent surface, track */
+  --brass: #cda94e; /* Certification gold, bright enough for dark */
+  --brass-tint: rgba(205, 169, 78, 0.16); /* Gold wash */
+  --clay: #c0744e; /* Destructive and warning, warm brown, never red */
+  --line: rgba(255, 255, 255, 0.1); /* Hairline borders and dividers */
+  --glass-edge: rgba(255, 255, 255, 0.14); /* Glass highlight border */
+
+  /* shadcn/ui semantic tokens, mapped onto the dark glass palette */
+  --radius: 0.6rem;
+  --background: var(--canvas);
   --foreground: var(--ink);
   --card: var(--paper-raised);
   --card-foreground: var(--ink);
-  --popover: var(--paper-raised);
+  --popover: #101b16;
   --popover-foreground: var(--ink);
   --primary: var(--ivy);
-  --primary-foreground: var(--paper);
+  --primary-foreground: #ffffff;
   --secondary: var(--sage-soft);
   --secondary-foreground: var(--ink);
   --muted: var(--sage-soft);
-  --muted-foreground: #50584f;
+  --muted-foreground: #93a79c;
   --accent: var(--brass-tint);
   --accent-foreground: var(--ink);
   --destructive: var(--clay);
-  --destructive-foreground: var(--paper);
+  --destructive-foreground: #ffffff;
   --border: var(--line);
-  --input: var(--line);
+  --input: rgba(255, 255, 255, 0.14);
   --ring: var(--ivy-tint);
 
-  /* Charts (admin dashboard): ivy, brass, sage tones, no red */
-  --chart-1: var(--ivy);
+  /* Charts (admin dashboard): ivy, gold, sage tones, no red */
+  --chart-1: var(--ivy-tint);
   --chart-2: var(--brass);
   --chart-3: var(--sage);
-  --chart-4: var(--ivy-tint);
-  --chart-5: var(--clay);
+  --chart-4: var(--ivy);
+  --chart-5: #6f8f9c;
 
-  /* Sidebar shell tokens */
-  --sidebar: var(--ivy);
-  --sidebar-foreground: var(--paper);
+  /* Sidebar: deepest glass over the canvas */
+  --sidebar: rgba(255, 255, 255, 0.03);
+  --sidebar-foreground: #d8e2dc;
   --sidebar-primary: var(--brass);
-  --sidebar-primary-foreground: var(--ink);
-  --sidebar-accent: var(--ivy-tint);
-  --sidebar-accent-foreground: var(--paper);
-  --sidebar-border: rgba(255, 255, 255, 0.12);
+  --sidebar-primary-foreground: #0a120f;
+  --sidebar-accent: rgba(255, 255, 255, 0.09);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
   --sidebar-ring: var(--brass);
 }
 
@@ -65,6 +77,7 @@
   /* Brand utilities: bg-paper, text-ink, bg-ivy, border-line, etc. */
   --color-paper: var(--paper);
   --color-paper-raised: var(--paper-raised);
+  --color-canvas: var(--canvas);
   --color-ink: var(--ink);
   --color-ivy: var(--ivy);
   --color-ivy-tint: var(--ivy-tint);
@@ -74,6 +87,7 @@
   --color-brass-tint: var(--brass-tint);
   --color-clay: var(--clay);
   --color-line: var(--line);
+  --color-glass-edge: var(--glass-edge);
 
   /* shadcn semantic colours */
   --color-background: var(--background);
@@ -124,16 +138,149 @@
   * {
     border-color: var(--color-border);
   }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--canvas);
+  }
+
   body {
-    background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+    background-color: transparent;
+    min-height: 100svh;
   }
+
+  /* Backdrop, layer one: the deep canvas plus a faint engraved grid. The grid
+     is masked so it reads near the top and fades out lower down, the way a
+     drafting sheet would. Static. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-color: var(--canvas);
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 46px 46px;
+    -webkit-mask-image: radial-gradient(
+      130% 110% at 50% -10%,
+      #000 38%,
+      transparent 86%
+    );
+    mask-image: radial-gradient(
+      130% 110% at 50% -10%,
+      #000 38%,
+      transparent 86%
+    );
+  }
+
+  /* Backdrop, layer two: a few large, low-alpha emerald and gold glows that
+     drift slowly. This is the quiet motion in the background. Cinematic, not
+     candy: low opacity, big blur, very slow. */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: -25%;
+    z-index: -1;
+    background:
+      radial-gradient(
+        38vmax 38vmax at 20% 24%,
+        rgba(43, 176, 131, 0.13),
+        transparent 60%
+      ),
+      radial-gradient(
+        32vmax 32vmax at 82% 58%,
+        rgba(205, 169, 78, 0.09),
+        transparent 60%
+      ),
+      radial-gradient(
+        44vmax 44vmax at 62% 92%,
+        rgba(31, 138, 99, 0.11),
+        transparent 62%
+      );
+    animation: backdrop-drift 42s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  @keyframes backdrop-drift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(-3%, 2.5%, 0) scale(1.06);
+    }
+    100% {
+      transform: translate3d(3%, -2%, 0) scale(1.03);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    body::after {
+      animation: none;
+    }
+  }
+
   h1,
   h2,
   h3,
   h4 {
     font-family: var(--font-serif), ui-serif, Georgia, serif;
+  }
+
+  ::selection {
+    background: rgba(43, 176, 131, 0.32);
+  }
+}
+
+@layer components {
+  /* Frosted glass panel used by cards, bars and raised surfaces. Light frost
+     on the dark canvas: a faint white veil, a hairline edge, a soft drop and a
+     subtle top highlight. */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid var(--glass-edge);
+    box-shadow:
+      0 24px 48px -28px rgba(0, 0, 0, 0.8),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  /* A slightly brighter glass for primary reading surfaces. */
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(125%);
+    -webkit-backdrop-filter: blur(20px) saturate(125%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow:
+      0 32px 60px -30px rgba(0, 0, 0, 0.85),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  /* The dashboard sidebar: the deepest, quietest glass. */
+  .glass-dark {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* A thin translucent bar for sticky headers and top bars. */
+  .glass-bar {
+    background: rgba(10, 18, 15, 0.6);
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+  }
+
+  /* A quiet nested panel inside glass cards (list rows, option tiles). */
+  .glass-inset {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 }

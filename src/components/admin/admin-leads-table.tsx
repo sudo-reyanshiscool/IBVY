@@ -55,7 +55,7 @@ export function AdminLeadsTable({ leads }: { leads: AdminLeadRow[] }) {
                   onChange={(e) =>
                     setStatus((s) => ({ ...s, [l.id]: e.target.value }))
                   }
-                  className="rounded-md border border-line bg-paper px-2 py-1 text-xs text-ink outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="rounded-md border border-line bg-white/8 px-2 py-1 text-xs text-ink outline-none focus-visible:ring-2 focus-visible:ring-ring [&>option]:bg-[#101b16] [&>option]:text-ink"
                 >
                   {LEAD_STATES.map((f) => (
                     <option key={f} value={f}>

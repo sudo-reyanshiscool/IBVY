@@ -14,14 +14,14 @@ export function ProgressBar({
   return (
     <div className={cn("flex items-center gap-3", className)}>
       <div
-        className="h-2 w-full overflow-hidden rounded-full bg-sage-soft"
+        className="h-2 w-full overflow-hidden rounded-full bg-white/8 ring-1 ring-inset ring-white/10"
         role="progressbar"
         aria-valuenow={pct}
         aria-valuemin={0}
         aria-valuemax={100}
       >
         <div
-          className="h-full rounded-full bg-ivy transition-[width] duration-500 ease-out"
+          className="h-full rounded-full bg-ivy-tint transition-[width] duration-500 ease-out"
           style={{ width: `${pct}%` }}
         />
       </div>

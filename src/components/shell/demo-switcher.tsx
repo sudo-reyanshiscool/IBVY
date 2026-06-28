@@ -22,7 +22,7 @@ export function DemoSwitcher({
 
   if (role === "admin" || options.length === 0) {
     return (
-      <span className="hidden items-center gap-1.5 rounded-full border border-brass/30 bg-brass-tint px-2.5 py-1 text-xs font-medium text-[#6b5325] sm:inline-flex">
+      <span className="hidden items-center gap-1.5 rounded-full border border-brass/30 bg-brass-tint px-2.5 py-1 text-xs font-medium text-brass sm:inline-flex">
         <FlaskConical className="size-3.5" aria-hidden />
         Demo
       </span>
@@ -37,7 +37,7 @@ export function DemoSwitcher({
   };
 
   return (
-    <label className="hidden items-center gap-2 rounded-full border border-brass/30 bg-brass-tint px-2.5 py-1 text-xs font-medium text-[#6b5325] sm:inline-flex">
+    <label className="hidden items-center gap-2 rounded-full border border-brass/30 bg-brass-tint px-2.5 py-1 text-xs font-medium text-brass sm:inline-flex">
       <FlaskConical className="size-3.5" aria-hidden />
       <span className="sr-only">Demo: act as</span>
       <span aria-hidden>Act as</span>

@@ -76,7 +76,7 @@ export default function TransformPage() {
               design a staff-training pilot.
             </p>
           </div>
-          <div className="mt-8 rounded-xl border border-line bg-paper p-6 sm:p-8">
+          <div className="glass mt-8 rounded-xl p-6 sm:p-8">
             <PilotForm defaultSchoolType="transforming" />
           </div>
         </div>

@@ -8,11 +8,11 @@ import { cn } from "@/lib/utils";
 type Tone = "ivy" | "brass" | "sage" | "clay" | "neutral";
 
 const toneClasses: Record<Tone, string> = {
-  ivy: "bg-ivy/10 text-ivy border-ivy/20",
-  brass: "bg-brass-tint text-[#6b5325] border-brass/30",
-  sage: "bg-sage-soft text-[#3f4a40] border-sage/40",
-  clay: "bg-clay/12 text-clay border-clay/25",
-  neutral: "bg-paper text-muted-foreground border-line",
+  ivy: "bg-ivy/18 text-[#5fd3a6] border-ivy/35",
+  brass: "bg-brass-tint text-brass border-brass/35",
+  sage: "bg-white/8 text-[#aebfb6] border-white/14",
+  clay: "bg-clay/18 text-[#e3a282] border-clay/35",
+  neutral: "bg-white/5 text-muted-foreground border-white/12",
 };
 
 /** Map every status string the platform uses to a tone and a readable label. */

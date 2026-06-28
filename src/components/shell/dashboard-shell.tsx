@@ -22,9 +22,9 @@ export function DashboardShell({
   demoSlot?: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-svh bg-paper">
+    <div className="flex min-h-svh">
       {/* Sidebar */}
-      <aside className="hidden w-64 shrink-0 flex-col bg-sidebar md:flex">
+      <aside className="glass-dark sticky top-0 hidden h-svh w-64 shrink-0 flex-col md:flex">
         <div className="flex h-16 items-center border-b border-sidebar-border px-6">
           <Wordmark tone="dark" href={`/${role}`} />
         </div>
@@ -38,7 +38,7 @@ export function DashboardShell({
 
       {/* Main column */}
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex h-16 items-center justify-between border-b border-line bg-paper-raised px-6">
+        <header className="glass-bar sticky top-0 z-20 flex h-16 items-center justify-between border-b border-glass-edge px-6">
           <div className="md:hidden">
             <Wordmark href={`/${role}`} />
           </div>

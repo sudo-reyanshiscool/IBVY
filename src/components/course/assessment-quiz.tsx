@@ -56,7 +56,7 @@ export function AssessmentQuiz({
             You scored {result.score}% and passed {course.title}. Your
             certificate has been issued with a verifiable number.
           </p>
-          <p className="rounded-md bg-paper px-4 py-2 font-mono text-sm text-brass">
+          <p className="rounded-md border border-brass/25 bg-brass-tint px-4 py-2 font-mono text-sm text-brass">
             {certificateNumber}
           </p>
           <div className="mt-2 flex gap-3">
