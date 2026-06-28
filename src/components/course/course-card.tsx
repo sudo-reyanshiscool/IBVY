@@ -16,7 +16,7 @@ export function CourseCard({
     0,
   );
   return (
-    <Card className="flex h-full flex-col">
+    <Card className="hover-lift group flex h-full flex-col hover:border-brass/40">
       <CardContent className="flex flex-1 flex-col p-6">
         <div className="flex items-center gap-2">
           {course.programme && (
@@ -26,7 +26,7 @@ export function CourseCard({
             {course.level}
           </Badge>
         </div>
-        <h3 className="mt-3 font-serif text-lg font-semibold leading-snug text-ink">
+        <h3 className="mt-3 font-serif text-lg font-semibold leading-snug text-ink transition-colors group-hover:text-ivy">
           {course.title}
         </h3>
         <p className="mt-1 text-sm text-brass">{course.subject}</p>

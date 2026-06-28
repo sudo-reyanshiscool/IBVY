@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen, Award, Briefcase, IndianRupee } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/brand/reveal";
 
 export const metadata: Metadata = {
   title: "Become IB",
@@ -32,53 +33,64 @@ const STEPS = [
 export default function BecomeIbPage() {
   return (
     <>
-      <section className="mx-auto w-full max-w-4xl px-6 pb-12 pt-20 text-center">
-        <Badge variant="brass" className="mb-5">
-          For teachers
-        </Badge>
-        <h1 className="font-serif text-5xl font-semibold leading-tight text-ink">
-          Become an IB teacher.
-        </h1>
-        <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
-          Train at low or no upfront cost, certify with the educator board, and
-          get placed in an IB school here in India.
-        </p>
-        <div className="mt-8 flex justify-center gap-3">
-          <Button asChild size="lg">
-            <Link href="/signup">
-              Start training <ArrowRight className="size-4" />
-            </Link>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link href="/courses">Browse courses</Link>
-          </Button>
+      <section className="relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+          <div className="ibvy-aurora absolute -left-20 -top-20 size-72 rounded-full bg-ivy/10 blur-3xl" />
+          <div className="ibvy-float absolute -right-10 top-6 size-64 rounded-full bg-brass/10 blur-3xl" />
+        </div>
+        <div className="mx-auto w-full max-w-4xl px-6 pb-12 pt-20 text-center">
+          <Badge variant="brass" className="mb-5 animate-fade-up">
+            For teachers
+          </Badge>
+          <h1 className="animate-fade-up font-serif text-5xl font-semibold leading-tight text-ink [animation-delay:80ms]">
+            Become an IB teacher.
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl animate-fade-up text-lg text-muted-foreground [animation-delay:160ms]">
+            Train at low or no upfront cost, certify with the educator board, and
+            get placed in an IB school here in India.
+          </p>
+          <div className="mt-8 flex justify-center gap-3 animate-fade-up [animation-delay:260ms]">
+            <Button asChild size="lg">
+              <Link href="/signup">
+                Start training{" "}
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/courses">Browse courses</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-5xl px-6 py-12">
         <div className="grid gap-5 md:grid-cols-3">
-          {STEPS.map((s) => {
+          {STEPS.map((s, i) => {
             const Icon = s.icon;
             return (
-              <Card key={s.title}>
-                <CardContent className="p-6">
-                  <div className="flex size-10 items-center justify-center rounded-full bg-ivy text-paper">
-                    <Icon className="size-5" aria-hidden />
-                  </div>
-                  <h2 className="mt-4 font-serif text-xl font-semibold text-ink">
-                    {s.title}
-                  </h2>
-                  <p className="mt-2 text-sm text-muted-foreground">{s.body}</p>
-                </CardContent>
-              </Card>
+              <Reveal key={s.title} delay={i * 120}>
+                <Card className="hover-lift group h-full">
+                  <CardContent className="p-6">
+                    <div className="flex size-10 items-center justify-center rounded-full bg-ivy text-paper transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                      <Icon className="size-5" aria-hidden />
+                    </div>
+                    <h2 className="mt-4 font-serif text-xl font-semibold text-ink">
+                      {s.title}
+                    </h2>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      {s.body}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Reveal>
             );
           })}
         </div>
       </section>
 
       <section className="border-y border-line bg-paper-raised">
-        <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4 px-6 py-16 text-center">
-          <IndianRupee className="size-7 text-brass" aria-hidden />
+        <Reveal className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4 px-6 py-16 text-center">
+          <IndianRupee className="ibvy-float size-7 text-brass" aria-hidden />
           <h2 className="font-serif text-3xl font-semibold text-ink">
             Low or no upfront cost
           </h2>
@@ -90,7 +102,7 @@ export default function BecomeIbPage() {
           <Button asChild className="mt-2">
             <Link href="/signup">Create your account</Link>
           </Button>
-        </div>
+        </Reveal>
       </section>
     </>
   );

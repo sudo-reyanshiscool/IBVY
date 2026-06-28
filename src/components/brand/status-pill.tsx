@@ -10,7 +10,7 @@ type Tone = "ivy" | "brass" | "sage" | "clay" | "neutral";
 const toneClasses: Record<Tone, string> = {
   ivy: "bg-ivy/10 text-ivy border-ivy/20",
   brass: "bg-brass-tint text-[#6b5325] border-brass/30",
-  sage: "bg-sage-soft text-[#3f4a40] border-sage/40",
+  sage: "bg-sage-soft text-[#334049] border-sage/40",
   clay: "bg-clay/12 text-clay border-clay/25",
   neutral: "bg-paper text-muted-foreground border-line",
 };
@@ -67,7 +67,7 @@ export function StatusPill({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium",
+        "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors",
         toneClasses[entry.tone],
         className,
       )}

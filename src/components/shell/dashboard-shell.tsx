@@ -52,7 +52,7 @@ export function DashboardShell({
                 {ROLE_LABEL[role]}
               </p>
             </div>
-            <div className="flex size-9 items-center justify-center rounded-full bg-ivy text-sm font-semibold text-paper">
+            <div className="pulse-ring flex size-9 items-center justify-center rounded-full bg-ivy text-sm font-semibold text-paper transition-transform hover:scale-105">
               {userName.charAt(0).toUpperCase()}
             </div>
             {signOutSlot}
@@ -60,7 +60,9 @@ export function DashboardShell({
         </header>
 
         <main className="flex-1 px-6 py-8">
-          <div className="mx-auto w-full max-w-6xl">{children}</div>
+          <div className="mx-auto w-full max-w-6xl animate-fade-up">
+            {children}
+          </div>
         </main>
       </div>
     </div>

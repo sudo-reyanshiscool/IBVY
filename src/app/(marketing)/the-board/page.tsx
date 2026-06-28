@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
+import { Reveal } from "@/components/brand/reveal";
 import { BOARD } from "@/lib/mock/board";
 
 export const metadata: Metadata = {
@@ -12,19 +13,21 @@ function BoardGrid({ group }: { group: "india" | "global" }) {
   const members = BOARD.filter((m) => m.group === group);
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {members.map((m) => (
-        <Card key={m.name}>
-          <CardContent className="flex items-start gap-4 p-5">
-            <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-brass-tint font-serif text-sm font-semibold text-brass">
-              {m.initials}
-            </div>
-            <div>
-              <p className="font-semibold text-ink">{m.name}</p>
-              <p className="mt-0.5 text-sm text-muted-foreground">{m.role}</p>
-              <p className="mt-1 text-xs text-brass">{m.location}</p>
-            </div>
-          </CardContent>
-        </Card>
+      {members.map((m, i) => (
+        <Reveal key={m.name} delay={i * 70}>
+          <Card className="hover-lift group h-full hover:border-brass/40">
+            <CardContent className="flex items-start gap-4 p-5">
+              <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-brass-tint font-serif text-sm font-semibold text-brass transition-transform duration-300 group-hover:scale-110">
+                {m.initials}
+              </div>
+              <div>
+                <p className="font-semibold text-ink">{m.name}</p>
+                <p className="mt-0.5 text-sm text-muted-foreground">{m.role}</p>
+                <p className="mt-1 text-xs text-brass">{m.location}</p>
+              </div>
+            </CardContent>
+          </Card>
+        </Reveal>
       ))}
     </div>
   );

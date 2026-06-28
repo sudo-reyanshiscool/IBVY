@@ -2,9 +2,10 @@
 @import "tw-animate-css";
 
 /*
-  IBvy brand layer. Editorial and institutional: warm cream, deep ivy green,
+  IBvy brand layer. Editorial and institutional: warm cream, deep navy,
   muted brass. Never red anywhere; destructive and warning states use clay.
-  Brand palette from the build brief, section 4.
+  Brand palette from the build brief, section 4, with the primary shifted
+  from ivy green to deep navy per the client.
 */
 
 :root {
@@ -12,10 +13,10 @@
   --paper: #f4f1e9; /* App background, warm cream */
   --paper-raised: #fbfaf5; /* Cards and raised surfaces */
   --ink: #1a1f1b; /* Primary text, warm near-black */
-  --ivy: #1e3a2b; /* Primary brand */
-  --ivy-tint: #3a6049; /* Hover and selected, secondary green */
-  --sage: #7e9685; /* Muted surfaces, neutral / in-progress */
-  --sage-soft: #dde5dc; /* Pale sage surface and progress track */
+  --ivy: #092045; /* Primary brand, deep navy */
+  --ivy-tint: #1b3d6e; /* Hover and selected, secondary navy */
+  --sage: #74879c; /* Muted surfaces, neutral / in-progress, slate */
+  --sage-soft: #dce3ec; /* Pale slate surface and progress track */
   --brass: #9c7a3c; /* Accent, certification, key icons and borders */
   --brass-tint: #e9dec8; /* Accent and badge backgrounds */
   --clay: #8a4b2f; /* Destructive and warning, a warm brown, never red */
@@ -34,7 +35,7 @@
   --secondary: var(--sage-soft);
   --secondary-foreground: var(--ink);
   --muted: var(--sage-soft);
-  --muted-foreground: #50584f;
+  --muted-foreground: #515761;
   --accent: var(--brass-tint);
   --accent-foreground: var(--ink);
   --destructive: var(--clay);
@@ -124,6 +125,9 @@
   * {
     border-color: var(--color-border);
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -135,5 +139,216 @@
   h3,
   h4 {
     font-family: var(--font-serif), ui-serif, Georgia, serif;
+  }
+}
+
+/*
+  Motion layer. Quiet, editorial movement: short distances, soft easing, no
+  bounce. Everything here collapses to nothing under prefers-reduced-motion so
+  the site stays calm and accessible for those who ask for it.
+*/
+
+@keyframes ibvy-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ibvy-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ibvy-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ibvy-shimmer {
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes ibvy-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes ibvy-text-shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@keyframes ibvy-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(9, 32, 69, 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(9, 32, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(9, 32, 69, 0);
+  }
+}
+
+@keyframes ibvy-aurora {
+  0% {
+    transform: translate(-6%, -4%) scale(1);
+  }
+  50% {
+    transform: translate(6%, 4%) scale(1.08);
+  }
+  100% {
+    transform: translate(-6%, -4%) scale(1);
+  }
+}
+
+/* Entrance utilities. Used directly or via the <Reveal> component. */
+.animate-fade-up {
+  animation: ibvy-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-fade-in {
+  animation: ibvy-fade-in 0.8s ease-out both;
+}
+.animate-scale-in {
+  animation: ibvy-scale-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Scroll reveal: hidden until the element marks itself visible in view. */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* A slow drifting blob for hero backdrops. */
+.ibvy-aurora {
+  animation: ibvy-aurora 18s ease-in-out infinite;
+}
+
+/* A navy to brass gradient that drifts across display text. */
+.text-shimmer {
+  background: linear-gradient(
+    100deg,
+    var(--ivy) 20%,
+    var(--brass) 40%,
+    var(--ivy-tint) 55%,
+    var(--ivy) 75%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: ibvy-text-shimmer 6s linear infinite;
+}
+
+/* A soft expanding ring, e.g. behind an avatar. */
+.pulse-ring {
+  animation: ibvy-pulse-ring 2.6s ease-out infinite;
+}
+
+/* Soft floating accent for hero ornaments. */
+.ibvy-float {
+  animation: ibvy-float 6s ease-in-out infinite;
+}
+
+/* Sweeping brass glint, e.g. across a progress fill or a certified badge. */
+.ibvy-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.ibvy-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(251, 250, 245, 0.45),
+    transparent
+  );
+  animation: ibvy-shimmer 2.4s ease-in-out infinite;
+}
+
+/* Animated underline that grows from the left on hover. */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1.5px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background-color: currentColor;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* A gentle lift used on interactive cards and tiles. */
+.hover-lift {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -24px rgba(26, 31, 27, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
