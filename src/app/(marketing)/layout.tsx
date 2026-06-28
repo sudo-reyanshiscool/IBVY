@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/marketing/site-header";
 import { SiteFooter } from "@/components/marketing/site-footer";
+import { ScrollProgress } from "@/components/brand/scroll-progress";
 
 export default function MarketingLayout({
   children,
@@ -8,6 +9,7 @@ export default function MarketingLayout({
 }) {
   return (
     <div className="flex min-h-svh flex-col">
+      <ScrollProgress />
       <SiteHeader />
       <main className="flex-1">{children}</main>
       <SiteFooter />

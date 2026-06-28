@@ -52,7 +52,7 @@ export function DashboardShell({
                 {ROLE_LABEL[role]}
               </p>
             </div>
-            <div className="flex size-9 items-center justify-center rounded-full bg-ivy text-sm font-semibold text-paper">
+            <div className="pulse-ring flex size-9 items-center justify-center rounded-full bg-ivy text-sm font-semibold text-paper transition-transform hover:scale-105">
               {userName.charAt(0).toUpperCase()}
             </div>
             {signOutSlot}

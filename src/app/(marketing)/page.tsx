@@ -52,7 +52,8 @@ export default function Home() {
             India-first IB teacher engine
           </Badge>
           <h1 className="mx-auto max-w-3xl animate-fade-up font-serif text-5xl font-semibold leading-[1.05] text-ink [animation-delay:80ms] sm:text-6xl">
-            Source, train, certify, and place IB teachers.
+            Source, train, certify, and{" "}
+            <span className="text-shimmer">place IB teachers.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl animate-fade-up text-lg leading-relaxed text-muted-foreground [animation-delay:180ms]">
             {SITE_NAME} is read as IB plus ivy: IB credentials with an Ivy League

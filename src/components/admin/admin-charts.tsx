@@ -13,9 +13,9 @@ import {
   Legend,
 } from "recharts";
 
-const IVY = "#1E3A2B";
+const IVY = "#092045";
 const BRASS = "#9C7A3C";
-const SAGE = "#7E9685";
+const SAGE = "#74879C";
 
 /** Supply funnel: teachers in training, certified, placed. */
 export function SupplyChart({

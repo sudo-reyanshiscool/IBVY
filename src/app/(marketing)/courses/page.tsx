@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CourseCard } from "@/components/course/course-card";
+import { Reveal } from "@/components/brand/reveal";
 import { getPublishedCourses } from "@/lib/data/queries";
 
 export const metadata: Metadata = {
@@ -25,16 +26,17 @@ export default function CoursesPage() {
       </div>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {courses.map((course) => (
-          <CourseCard
-            key={course.id}
-            course={course}
-            footer={
-              <Button asChild variant="outline" className="w-full">
-                <Link href="/signup">Sign in to enrol</Link>
-              </Button>
-            }
-          />
+        {courses.map((course, i) => (
+          <Reveal key={course.id} delay={(i % 3) * 100}>
+            <CourseCard
+              course={course}
+              footer={
+                <Button asChild variant="outline" className="w-full">
+                  <Link href="/signup">Sign in to enrol</Link>
+                </Button>
+              }
+            />
+          </Reveal>
         ))}
       </div>
     </section>

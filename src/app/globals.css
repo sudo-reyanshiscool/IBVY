@@ -2,9 +2,10 @@
 @import "tw-animate-css";
 
 /*
-  IBvy brand layer. Editorial and institutional: warm cream, deep ivy green,
+  IBvy brand layer. Editorial and institutional: warm cream, deep navy,
   muted brass. Never red anywhere; destructive and warning states use clay.
-  Brand palette from the build brief, section 4.
+  Brand palette from the build brief, section 4, with the primary shifted
+  from ivy green to deep navy per the client.
 */
 
 :root {
@@ -12,10 +13,10 @@
   --paper: #f4f1e9; /* App background, warm cream */
   --paper-raised: #fbfaf5; /* Cards and raised surfaces */
   --ink: #1a1f1b; /* Primary text, warm near-black */
-  --ivy: #1e3a2b; /* Primary brand */
-  --ivy-tint: #3a6049; /* Hover and selected, secondary green */
-  --sage: #7e9685; /* Muted surfaces, neutral / in-progress */
-  --sage-soft: #dde5dc; /* Pale sage surface and progress track */
+  --ivy: #092045; /* Primary brand, deep navy */
+  --ivy-tint: #1b3d6e; /* Hover and selected, secondary navy */
+  --sage: #74879c; /* Muted surfaces, neutral / in-progress, slate */
+  --sage-soft: #dce3ec; /* Pale slate surface and progress track */
   --brass: #9c7a3c; /* Accent, certification, key icons and borders */
   --brass-tint: #e9dec8; /* Accent and badge backgrounds */
   --clay: #8a4b2f; /* Destructive and warning, a warm brown, never red */
@@ -34,7 +35,7 @@
   --secondary: var(--sage-soft);
   --secondary-foreground: var(--ink);
   --muted: var(--sage-soft);
-  --muted-foreground: #50584f;
+  --muted-foreground: #515761;
   --accent: var(--brass-tint);
   --accent-foreground: var(--ink);
   --destructive: var(--clay);
@@ -194,6 +195,27 @@
   }
 }
 
+@keyframes ibvy-text-shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@keyframes ibvy-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(9, 32, 69, 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(9, 32, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(9, 32, 69, 0);
+  }
+}
+
 @keyframes ibvy-aurora {
   0% {
     transform: translate(-6%, -4%) scale(1);
@@ -234,6 +256,28 @@
 /* A slow drifting blob for hero backdrops. */
 .ibvy-aurora {
   animation: ibvy-aurora 18s ease-in-out infinite;
+}
+
+/* A navy to brass gradient that drifts across display text. */
+.text-shimmer {
+  background: linear-gradient(
+    100deg,
+    var(--ivy) 20%,
+    var(--brass) 40%,
+    var(--ivy-tint) 55%,
+    var(--ivy) 75%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: ibvy-text-shimmer 6s linear infinite;
+}
+
+/* A soft expanding ring, e.g. behind an avatar. */
+.pulse-ring {
+  animation: ibvy-pulse-ring 2.6s ease-out infinite;
 }
 
 /* Soft floating accent for hero ornaments. */

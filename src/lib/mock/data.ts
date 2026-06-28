@@ -450,7 +450,7 @@ export const TEACHERS: Teacher[] = [
     phone: "+91 98200 11223",
     programmes: ["MYP"],
     status: "certified",
-    photoColour: "#3A6049",
+    photoColour: "#1B3D6E",
   },
   {
     id: "t-arjun",
@@ -464,7 +464,7 @@ export const TEACHERS: Teacher[] = [
     phone: "+91 98860 44556",
     programmes: ["DP"],
     status: "placed",
-    photoColour: "#1E3A2B",
+    photoColour: "#092045",
   },
   {
     id: "t-meera",
@@ -492,7 +492,7 @@ export const TEACHERS: Teacher[] = [
     phone: "+91 99100 33445",
     programmes: ["MYP"],
     status: "certified",
-    photoColour: "#7E9685",
+    photoColour: "#74879C",
   },
   {
     id: "t-ananya",
@@ -506,7 +506,7 @@ export const TEACHERS: Teacher[] = [
     phone: "+91 98300 22110",
     programmes: ["MYP", "DP"],
     status: "training",
-    photoColour: "#3A6049",
+    photoColour: "#1B3D6E",
   },
   {
     id: "t-rahul",
@@ -520,7 +520,7 @@ export const TEACHERS: Teacher[] = [
     phone: "+91 90040 55667",
     programmes: ["DP"],
     status: "open_to_offers",
-    photoColour: "#1E3A2B",
+    photoColour: "#092045",
   },
   {
     id: "t-sneha",
@@ -550,7 +550,7 @@ export const TEACHERS: Teacher[] = [
     programmes: ["MYP"],
     status: "training",
     sponsoringSchoolId: "s-sunrise",
-    photoColour: "#7E9685",
+    photoColour: "#74879C",
   },
 ];
 
